@@ -9,16 +9,8 @@ import SwiftUI
 
 struct SearchResultView: View {
     
-    init() {
-        for familyName in UIFont.familyNames {
-            UIFont.fontNames(forFamilyName: familyName).forEach { fontName in
-          print(fontName)
-            }
-        }
-    }
     var body: some View {
         HStack {
-      
             VStack {
                 Image("earth")
                     .resizable()
@@ -27,9 +19,9 @@ struct SearchResultView: View {
             }
             VStack(alignment: .leading) {
                 Text("Earth")
-                    .font(Font.custom("OpenSans-Bold", size: 34.59))
+                    .font(.custom(AppFonts.openSansBold, size: 34.59))
                 Text("258.000 km")
-                    .font(Font.custom("OpenSans-Bold", size: 14))
+                    .font(.custom(AppFonts.openSansBold, size: 14))
             }
             Spacer()
             Button {
