@@ -11,6 +11,12 @@
 		3463E5602A4BFC140066D33E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3463E55F2A4BFC140066D33E /* ContentView.swift */; };
 		3463E5622A4BFC170066D33E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3463E5612A4BFC170066D33E /* Assets.xcassets */; };
 		3463E5652A4BFC170066D33E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3463E5642A4BFC170066D33E /* Preview Assets.xcassets */; };
+		3463E56D2A4C01540066D33E /* StartSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3463E56C2A4C01540066D33E /* StartSearchView.swift */; };
+		3463E56F2A4C03B00066D33E /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3463E56E2A4C03B00066D33E /* SearchBar.swift */; };
+		3463E5712A4C054C0066D33E /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3463E5702A4C054C0066D33E /* SearchResultView.swift */; };
+		3463E5832A4D2DB40066D33E /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3463E5822A4D2DB40066D33E /* OpenSans-Regular.ttf */; };
+		3463E5852A4D2DC50066D33E /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3463E5842A4D2DC50066D33E /* OpenSans-Bold.ttf */; };
+		3463E5872A4D2DD10066D33E /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3463E5862A4D2DD10066D33E /* OpenSans-Semibold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +25,13 @@
 		3463E55F2A4BFC140066D33E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3463E5612A4BFC170066D33E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3463E5642A4BFC170066D33E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3463E56C2A4C01540066D33E /* StartSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartSearchView.swift; sourceTree = "<group>"; };
+		3463E56E2A4C03B00066D33E /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		3463E5702A4C054C0066D33E /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
+		3463E5822A4D2DB40066D33E /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		3463E5842A4D2DC50066D33E /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		3463E5862A4D2DD10066D33E /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		3463E5882A4D30330066D33E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +64,12 @@
 		3463E55C2A4BFC140066D33E /* Nasa */ = {
 			isa = PBXGroup;
 			children = (
+				3463E5892A4D31EB0066D33E /* Search */,
+				3463E5882A4D30330066D33E /* Info.plist */,
+				3463E5812A4D2DA50066D33E /* Fonts */,
 				3463E55D2A4BFC140066D33E /* NasaApp.swift */,
 				3463E55F2A4BFC140066D33E /* ContentView.swift */,
+				3463E56B2A4C01190066D33E /* Components */,
 				3463E5612A4BFC170066D33E /* Assets.xcassets */,
 				3463E5632A4BFC170066D33E /* Preview Content */,
 			);
@@ -65,6 +82,49 @@
 				3463E5642A4BFC170066D33E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3463E56B2A4C01190066D33E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				3463E56C2A4C01540066D33E /* StartSearchView.swift */,
+				3463E56E2A4C03B00066D33E /* SearchBar.swift */,
+				3463E5702A4C054C0066D33E /* SearchResultView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		3463E5812A4D2DA50066D33E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3463E5862A4D2DD10066D33E /* OpenSans-Semibold.ttf */,
+				3463E5842A4D2DC50066D33E /* OpenSans-Bold.ttf */,
+				3463E5822A4D2DB40066D33E /* OpenSans-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		3463E5892A4D31EB0066D33E /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				3463E58B2A4D32210066D33E /* New Group */,
+				3463E58A2A4D31F10066D33E /* Main */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		3463E58A2A4D31F10066D33E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		3463E58B2A4D32210066D33E /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +143,8 @@
 			dependencies = (
 			);
 			name = Nasa;
+			packageProductDependencies = (
+			);
 			productName = Nasa;
 			productReference = 3463E55A2A4BFC140066D33E /* Nasa.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +173,8 @@
 				Base,
 			);
 			mainGroup = 3463E5512A4BFC140066D33E;
+			packageReferences = (
+			);
 			productRefGroup = 3463E55B2A4BFC140066D33E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,7 +190,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3463E5652A4BFC170066D33E /* Preview Assets.xcassets in Resources */,
+				3463E5832A4D2DB40066D33E /* OpenSans-Regular.ttf in Resources */,
+				3463E5852A4D2DC50066D33E /* OpenSans-Bold.ttf in Resources */,
 				3463E5622A4BFC170066D33E /* Assets.xcassets in Resources */,
+				3463E5872A4D2DD10066D33E /* OpenSans-Semibold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +205,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3463E5602A4BFC140066D33E /* ContentView.swift in Sources */,
+				3463E56F2A4C03B00066D33E /* SearchBar.swift in Sources */,
+				3463E56D2A4C01540066D33E /* StartSearchView.swift in Sources */,
 				3463E55E2A4BFC140066D33E /* NasaApp.swift in Sources */,
+				3463E5712A4C054C0066D33E /* SearchResultView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,11 +340,12 @@
 				DEVELOPMENT_TEAM = 8244FLRS75;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Nasa/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -282,9 +353,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = come.aselZhumalieva.Nasa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -299,11 +373,12 @@
 				DEVELOPMENT_TEAM = 8244FLRS75;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Nasa/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -311,9 +386,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = come.aselZhumalieva.Nasa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
