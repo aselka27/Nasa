@@ -21,7 +21,7 @@ struct HomeView: View {
                 SearchBar(searchText: $viewModel.searchQuery)
                 switch viewModel.viewState {
                 case .loading:
-                    ProgressView()
+                    EmptyView()
                 case .success(let searchResult):
                     ForEach(searchResult, id: \.id) {_ in
                         SearchResultView()

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SearchResultView: View {
+    var item: Item
     
     var body: some View {
         HStack {
@@ -18,7 +19,7 @@ struct SearchResultView: View {
                     .clipShape(Circle())
             }
             VStack(alignment: .leading) {
-                Text("Earth")
+                Text(item.data?.first?.title ?? "N/A")
                     .font(.custom(AppFonts.openSansBold, size: 34.59))
                 Text("258.000 km")
                     .font(.custom(AppFonts.openSansBold, size: 14))
@@ -48,8 +49,8 @@ struct SearchResultView: View {
     }
 }
 
-struct SearchResultView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchResultView()
-    }
-}
+//struct SearchResultView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SearchResultView(item: <#Item#>)
+//    }
+//}
