@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3463E55E2A4BFC140066D33E /* NasaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3463E55D2A4BFC140066D33E /* NasaApp.swift */; };
-		3463E5602A4BFC140066D33E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3463E55F2A4BFC140066D33E /* ContentView.swift */; };
+		3463E5602A4BFC140066D33E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3463E55F2A4BFC140066D33E /* HomeView.swift */; };
 		3463E5622A4BFC170066D33E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3463E5612A4BFC170066D33E /* Assets.xcassets */; };
 		3463E5652A4BFC170066D33E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3463E5642A4BFC170066D33E /* Preview Assets.xcassets */; };
 		3463E56D2A4C01540066D33E /* StartSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3463E56C2A4C01540066D33E /* StartSearchView.swift */; };
@@ -17,12 +17,19 @@
 		3463E5832A4D2DB40066D33E /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3463E5822A4D2DB40066D33E /* OpenSans-Regular.ttf */; };
 		3463E5852A4D2DC50066D33E /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3463E5842A4D2DC50066D33E /* OpenSans-Bold.ttf */; };
 		3463E5872A4D2DD10066D33E /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3463E5862A4D2DD10066D33E /* OpenSans-Semibold.ttf */; };
+		347579C32A4D3E6600799B68 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347579C22A4D3E6600799B68 /* BaseRouter.swift */; };
+		347579C62A4D3EBA00799B68 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347579C52A4D3EBA00799B68 /* HttpMethod.swift */; };
+		347579C82A4D3EF400799B68 /* HttpHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347579C72A4D3EF400799B68 /* HttpHeader.swift */; };
+		347579CB2A4D430400799B68 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347579CA2A4D430400799B68 /* RequestBuilder.swift */; };
+		347579CD2A4D43B700799B68 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347579CC2A4D43B700799B68 /* APIService.swift */; };
+		347579CF2A4D442F00799B68 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347579CE2A4D442F00799B68 /* APIError.swift */; };
+		347579D12A4D458000799B68 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347579D02A4D458000799B68 /* SearchRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3463E55A2A4BFC140066D33E /* Nasa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nasa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3463E55D2A4BFC140066D33E /* NasaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaApp.swift; sourceTree = "<group>"; };
-		3463E55F2A4BFC140066D33E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3463E55F2A4BFC140066D33E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		3463E5612A4BFC170066D33E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3463E5642A4BFC170066D33E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3463E56C2A4C01540066D33E /* StartSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartSearchView.swift; sourceTree = "<group>"; };
@@ -32,6 +39,13 @@
 		3463E5842A4D2DC50066D33E /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		3463E5862A4D2DD10066D33E /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		3463E5882A4D30330066D33E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		347579C22A4D3E6600799B68 /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
+		347579C52A4D3EBA00799B68 /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
+		347579C72A4D3EF400799B68 /* HttpHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpHeader.swift; sourceTree = "<group>"; };
+		347579CA2A4D430400799B68 /* RequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
+		347579CC2A4D43B700799B68 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		347579CE2A4D442F00799B68 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		347579D02A4D458000799B68 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,11 +78,12 @@
 		3463E55C2A4BFC140066D33E /* Nasa */ = {
 			isa = PBXGroup;
 			children = (
+				347579C12A4D3E4800799B68 /* Services  */,
 				3463E5892A4D31EB0066D33E /* Search */,
 				3463E5882A4D30330066D33E /* Info.plist */,
 				3463E5812A4D2DA50066D33E /* Fonts */,
 				3463E55D2A4BFC140066D33E /* NasaApp.swift */,
-				3463E55F2A4BFC140066D33E /* ContentView.swift */,
+				3463E55F2A4BFC140066D33E /* HomeView.swift */,
 				3463E56B2A4C01190066D33E /* Components */,
 				3463E5612A4BFC170066D33E /* Assets.xcassets */,
 				3463E5632A4BFC170066D33E /* Preview Content */,
@@ -125,6 +140,44 @@
 			children = (
 			);
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		347579C12A4D3E4800799B68 /* Services  */ = {
+			isa = PBXGroup;
+			children = (
+				347579D22A4D562A00799B68 /* SearchService */,
+				347579C42A4D3E6A00799B68 /* NetworkService */,
+			);
+			path = "Services ";
+			sourceTree = "<group>";
+		};
+		347579C42A4D3E6A00799B68 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				347579C92A4D42E500799B68 /* NetworkComponents */,
+				347579CA2A4D430400799B68 /* RequestBuilder.swift */,
+				347579CC2A4D43B700799B68 /* APIService.swift */,
+				347579D02A4D458000799B68 /* SearchRouter.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		347579C92A4D42E500799B68 /* NetworkComponents */ = {
+			isa = PBXGroup;
+			children = (
+				347579C22A4D3E6600799B68 /* BaseRouter.swift */,
+				347579C52A4D3EBA00799B68 /* HttpMethod.swift */,
+				347579C72A4D3EF400799B68 /* HttpHeader.swift */,
+				347579CE2A4D442F00799B68 /* APIError.swift */,
+			);
+			path = NetworkComponents;
+			sourceTree = "<group>";
+		};
+		347579D22A4D562A00799B68 /* SearchService */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SearchService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,11 +257,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3463E5602A4BFC140066D33E /* ContentView.swift in Sources */,
+				347579D12A4D458000799B68 /* SearchRouter.swift in Sources */,
+				3463E5602A4BFC140066D33E /* HomeView.swift in Sources */,
+				347579C32A4D3E6600799B68 /* BaseRouter.swift in Sources */,
 				3463E56F2A4C03B00066D33E /* SearchBar.swift in Sources */,
+				347579CB2A4D430400799B68 /* RequestBuilder.swift in Sources */,
+				347579C62A4D3EBA00799B68 /* HttpMethod.swift in Sources */,
+				347579C82A4D3EF400799B68 /* HttpHeader.swift in Sources */,
+				347579CD2A4D43B700799B68 /* APIService.swift in Sources */,
 				3463E56D2A4C01540066D33E /* StartSearchView.swift in Sources */,
 				3463E55E2A4BFC140066D33E /* NasaApp.swift in Sources */,
 				3463E5712A4C054C0066D33E /* SearchResultView.swift in Sources */,
+				347579CF2A4D442F00799B68 /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
