@@ -10,15 +10,18 @@ import SwiftUI
 struct SearchBar: View {
     @Binding var searchText: String
     var body: some View {
-        HStack {
+        HStack(spacing: 3) {
+            Image(systemName: "magnifyingglass")
+                .padding(.leading)
             TextField("Start searching", text: $searchText)
-                .tint(.red)
                 .padding(.horizontal)
-            
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
+                .submitLabel(.go)
         }
         .frame(maxWidth: .infinity)
         .frame(height: 60)
-        .background(.gray)
+        .background(.white)
         .cornerRadius(10)
         .padding(.horizontal)
     }

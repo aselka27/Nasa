@@ -8,17 +8,10 @@
 import SwiftUI
 
 struct SearchResultView: View {
+    var item: Item
     
-    init() {
-        for familyName in UIFont.familyNames {
-            UIFont.fontNames(forFamilyName: familyName).forEach { fontName in
-          print(fontName)
-            }
-        }
-    }
     var body: some View {
         HStack {
-      
             VStack {
                 Image("earth")
                     .resizable()
@@ -26,10 +19,11 @@ struct SearchResultView: View {
                     .clipShape(Circle())
             }
             VStack(alignment: .leading) {
-                Text("Earth")
-                    .font(Font.custom("OpenSans-Bold", size: 34.59))
-                Text("258.000 km")
-                    .font(Font.custom("OpenSans-Bold", size: 14))
+                Text(item.data?.first?.title ?? "N/A")
+                    .font(.custom(AppFonts.openSansBold, size: 34.59))
+                    .lineLimit(1)
+                Text(item.data?.first?.dateCreated?.formatDateString() ?? "N/A")
+                    .font(.custom(AppFonts.openSansBold, size: 14))
             }
             Spacer()
             Button {
@@ -56,8 +50,8 @@ struct SearchResultView: View {
     }
 }
 
-struct SearchResultView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchResultView()
-    }
-}
+//struct SearchResultView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SearchResultView(item: <#Item#>)
+//    }
+//}
