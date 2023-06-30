@@ -21,7 +21,8 @@ struct SearchResultView: View {
             VStack(alignment: .leading) {
                 Text(item.data?.first?.title ?? "N/A")
                     .font(.custom(AppFonts.openSansBold, size: 34.59))
-                Text("258.000 km")
+                    .lineLimit(1)
+                Text(item.data?.first?.dateCreated?.formatDateString() ?? "N/A")
                     .font(.custom(AppFonts.openSansBold, size: 14))
             }
             Spacer()

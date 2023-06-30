@@ -16,24 +16,28 @@ struct HomeView: View {
                 HStack {
                     Text("Nasa Search Engine")
                         .font(.custom(AppFonts.openSansBold, size: 34))
-                        .foregroundColor(Color("orange"))
+                        .foregroundColor(.white)
                 }
                 SearchBar(searchText: $viewModel.searchQuery)
                 switch viewModel.viewState {
                 case .loading:
-                    EmptyView()
+                    ProgressView()
+                        .padding(.top)
                 case .success(let searchResult):
-                    ForEach(searchResult, id: \.id) {_ in
-                        SearchResultView()
+                    ForEach(searchResult, id: \.id) { item in
+                        SearchResultView(item: item)
                     }
                 case .error(let errorDescription):
-                    EmptyView()
+                    ErrorView()
                 }
+                Spacer()
             }
-            .background(LinearGradient(colors: [Color("background"), Color("orange")], startPoint: .leading, endPoint: .trailing))
-          
+            .padding(.top, 50)
         }
-       
+        .background(LinearGradient(colors: [Color("background"), Color("orange")], startPoint: .leading, endPoint: .trailing))
+        
+        .frame(height: UIScreen.main.bounds.height)
+        .edgesIgnoringSafeArea(.top)
     }
 }
 
@@ -42,3 +46,16 @@ struct ContentView_Previews: PreviewProvider {
         HomeView()
     }
 }
+
+
+//                switch viewModel.viewState {
+//                case .loading:
+//                    ProgressView()
+//                        .padding(.top)
+//                case .success(let searchResult):
+//                    ForEach(searchResult, id: \.id) { item in
+//                        SearchResultView(item: item)
+//                    }
+//                case .error(let errorDescription):
+//                    ErrorView()
+//                }

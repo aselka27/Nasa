@@ -32,6 +32,7 @@ class HomeViewModelImpl: HomeViewModel, ObservableObject {
             .sink { [weak self] query in
                 if query == "" {
                     // data is reset
+                    self?.viewState = .success([])
                 } else {
                     // start search
                     print(query)
@@ -47,6 +48,7 @@ class HomeViewModelImpl: HomeViewModel, ObservableObject {
             do {
                 let response =  try await searchService.performFetchRequest(with: query)
                 guard let items = response.collection?.items else { return }
+                searchResult = items
                 viewState = .success(items)
                 print(response.collection?.items?.count)
             } catch {
