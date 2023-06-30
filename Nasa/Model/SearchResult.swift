@@ -48,8 +48,12 @@ struct Link: Codable {
     let href: String?
 }
 
-extension Item: Identifiable {
-    var id: UUID {
-        return UUID()
+extension Item {
+    
+    var imageURL: URL? {
+        if let urlString = self.data?.first?.links?.first?.href {
+            return URL(string: urlString)
+        }
+      return nil
     }
 }

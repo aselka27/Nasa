@@ -6,39 +6,46 @@
 //
 
 import SwiftUI
+import Combine
 
 struct HomeView: View {
-    @State var query: String = ""
     @StateObject var viewModel = HomeViewModelImpl()
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            VStack {
-                HStack {
-                    Text("Nasa Search Engine")
-                        .font(.custom(AppFonts.openSansBold, size: 34))
-                        .foregroundColor(.white)
-                }
+            LazyVStack {
+                Text("Nasa Search Engine")
+                    .font(.custom(AppFonts.openSansBold, size: 22))
+                    .foregroundColor(.white)
                 SearchBar(searchText: $viewModel.searchQuery)
-                switch viewModel.viewState {
-                case .loading:
-                    ProgressView()
-                        .padding(.top)
-                case .success(let searchResult):
-                    ForEach(searchResult, id: \.id) { item in
-                        SearchResultView(item: item)
+                    switch viewModel.viewState {
+                    case .loading:
+                         ProgressView()
+                    case .success(let items):
+                            ForEach(items, id: \.data?.first?.id) { item in
+                                NavigationLink {
+                                    SearchResultDetailView(item: item)
+                                } label: {
+                                    SearchResultView(item: item)
+                                }
+                            }
+                        
+                    case .error(let description):
+                        EmptyView()
                     }
-                case .error(let errorDescription):
-                    ErrorView()
-                }
-                Spacer()
             }
-            .padding(.top, 50)
+            .padding(.top, 70)
         }
-        .background(LinearGradient(colors: [Color("background"), Color("orange")], startPoint: .leading, endPoint: .trailing))
-        
-        .frame(height: UIScreen.main.bounds.height)
         .edgesIgnoringSafeArea(.top)
+        .background(LinearGradient(colors: [Color("gradient1"), Color("gradient2")], startPoint: .top, endPoint: .bottom))
+        .navigationBarHidden(true)
+        .onTapGesture {
+            self.hideKeyboard1()
+        }
+       
+        
     }
+    
+ 
 }
 
 struct ContentView_Previews: PreviewProvider {
@@ -46,16 +53,9 @@ struct ContentView_Previews: PreviewProvider {
         HomeView()
     }
 }
+extension View {
+    func hideKeyboard1() {
+        UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.endEditing(true)
+    }
+}
 
-
-//                switch viewModel.viewState {
-//                case .loading:
-//                    ProgressView()
-//                        .padding(.top)
-//                case .success(let searchResult):
-//                    ForEach(searchResult, id: \.id) { item in
-//                        SearchResultView(item: item)
-//                    }
-//                case .error(let errorDescription):
-//                    ErrorView()
-//                }
