@@ -17,17 +17,16 @@ struct Collection: Codable {
 }
 
 struct Item: Codable {
-    let href: String?
     let data: [ItemDetail]?
     let links: [Link]?
 }
 
 struct ItemDetail: Codable {
+    let id: String?
     let title: String?
     let dateCreated: String?
     let description: String?
- 
-    let id: String?
+    
     
     enum CodingKeys: String, CodingKey {
         case title, description
@@ -46,16 +45,5 @@ struct ItemDetail: Codable {
 
 struct Link: Codable {
     let href: String?
-    let rel: String?
-    let render: String?
 }
 
-extension Item {
-//    
-//    var imageURL: URL? {
-//        if let urlString = self.data?.first?.links?.first?.href {
-//            return URL(string: urlString)
-//        }
-//      return nil
-//    }
-}

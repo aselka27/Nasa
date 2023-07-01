@@ -10,11 +10,17 @@ import Kingfisher
 
 
 struct SearchResultDetailView: View {
-   
+    
     var item: Item
     @Environment(\.dismiss) var dismiss
+    
+    init(item: Item) {
+        UINavigationController().hidesBarsOnSwipe = true
+        self.item = item
+    }
     var body: some View {
-        ScrollView(.vertical) {
+      
+        ScrollView(.vertical, showsIndicators: false) {
             VStack {
                 
                 KFImage(URL(string: item.links?.first?.href ?? ""))
@@ -35,15 +41,21 @@ struct SearchResultDetailView: View {
                     Text("About")
                         .font(.custom(AppFonts.openSansBold, size: 19))
                         .foregroundColor(.white)
+                    Text("Date publsihed: \(item.data?.first?.dateCreated ?? "N/A")")
+                        .foregroundColor(.white)
+                        .font(.custom(AppFonts.openSansRegular, size: 17))
+                        .padding(.bottom, 50)
                     Spacer()
                     Text(item.data?.first?.description ?? "N/A")
                         .font(.custom(AppFonts.openSansRegular, size: 17))
                         .multilineTextAlignment(.leading)
                         .lineSpacing(8)
                         .foregroundColor(.white)
+                   
                     
                 }
                 .padding(.horizontal)
+            
             
                 .background(LinearGradient(colors: [Color("gradient1"), Color("gradient2")], startPoint: .topLeading, endPoint: .topTrailing)
                     .clipShape(CustomShape())
@@ -51,13 +63,11 @@ struct SearchResultDetailView: View {
                    
                 )
             }
-           
-           
-        
         }
         .ignoresSafeArea(.all, edges: .all)
         .background(LinearGradient(colors: [Color("gradient1"), Color("gradient2")], startPoint: .topLeading, endPoint: .topTrailing))
-        .navigationBarHidden(true)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle(item.data?.first?.title ?? "N/A")
         .navigationBarBackButtonHidden(true)
         .toolbar(content: {
             ToolbarItem(placement: .navigationBarLeading) {

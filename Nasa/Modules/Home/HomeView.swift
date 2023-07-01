@@ -29,8 +29,9 @@ struct HomeView: View {
                                     SearchResultView(item: item)
                                 }
                             }
-                        
                     case .error(let description):
+                        EmptyView()
+                    case .none:
                         EmptyView()
                     }
             }
@@ -40,10 +41,16 @@ struct HomeView: View {
         .background(LinearGradient(colors: [Color("gradient1"), Color("gradient2")], startPoint: .top, endPoint: .bottom))
         .navigationBarHidden(true)
         .onAppear {
-            UIScrollView.appearance().keyboardDismissMode = .onDrag
+            UIScrollView.appearance().keyboardDismissMode = .interactive
         }
+        .onTapGesture {
+            dismissKeyboard()
+        }
+       
     }
-    
+    func dismissKeyboard() {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
  
 }
 
