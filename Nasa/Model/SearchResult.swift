@@ -17,19 +17,19 @@ struct Collection: Codable {
 }
 
 struct Item: Codable {
-    let href: String?
     let data: [ItemDetail]?
+    let links: [Link]?
 }
 
 struct ItemDetail: Codable {
+    let id: String?
     let title: String?
     let dateCreated: String?
     let description: String?
-    let links: [Link]?
-    let id: String?
+    
     
     enum CodingKeys: String, CodingKey {
-        case title, description, links
+        case title, description
         case dateCreated = "date_created"
         case id = "nasa_id"
     }
@@ -39,7 +39,6 @@ struct ItemDetail: Codable {
         title = try values.decodeIfPresent(String.self, forKey: .title)
         dateCreated = try values.decodeIfPresent(String.self, forKey: .dateCreated)
         description = try values.decodeIfPresent(String.self, forKey: .description)
-        links = try values.decodeIfPresent([Link].self, forKey: .links)
         id = try values.decodeIfPresent(String.self, forKey: .id)
     }
 }
@@ -48,8 +47,3 @@ struct Link: Codable {
     let href: String?
 }
 
-extension Item: Identifiable {
-    var id: UUID {
-        return UUID()
-    }
-}

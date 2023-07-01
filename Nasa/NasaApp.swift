@@ -11,7 +11,9 @@ import SwiftUI
 struct NasaApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            NavigationView {
+                HomeView()
+            }
         }
     }
 }

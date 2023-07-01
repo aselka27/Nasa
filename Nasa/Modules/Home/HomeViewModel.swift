@@ -17,7 +17,7 @@ protocol HomeViewModel {
 
 class HomeViewModelImpl: HomeViewModel, ObservableObject {
     @Published var searchQuery: String = ""
-    @Published var viewState: ViewState<[Item]> = .loading
+    @Published var viewState: ViewState<[Item]>?
     var searchCancellable: Set<AnyCancellable> = []
     let searchService = SearchServiceImpl.shared
     @Published var searchResult: [Item] = []
@@ -46,11 +46,12 @@ class HomeViewModelImpl: HomeViewModel, ObservableObject {
         guard !query.isEmpty else { return }
         Task { @MainActor in
             do {
+                viewState = .loading
                 let response =  try await searchService.performFetchRequest(with: query)
                 guard let items = response.collection?.items else { return }
                 searchResult = items
                 viewState = .success(items)
-                print(response.collection?.items?.count)
+               
             } catch {
                 viewState = .error(error)
                 print(error)

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct SearchResultView: View {
     var item: Item
@@ -13,41 +14,32 @@ struct SearchResultView: View {
     var body: some View {
         HStack {
             VStack {
-                Image("earth")
+                KFImage.url(URL(string: item.links?.first?.href ?? ""))
+                    .placeholder({
+                        ProgressView()
+                    })
                     .resizable()
                     .frame(width: 100, height: 100)
                     .clipShape(Circle())
+                    
+                    
             }
             VStack(alignment: .leading) {
                 Text(item.data?.first?.title ?? "N/A")
                     .font(.custom(AppFonts.openSansBold, size: 34.59))
+                    .foregroundColor(.white)
                     .lineLimit(1)
                 Text(item.data?.first?.dateCreated?.formatDateString() ?? "N/A")
+                    .foregroundColor(.white)
                     .font(.custom(AppFonts.openSansBold, size: 14))
             }
             Spacer()
-            Button {
-                //
-            } label: {
-                Image(systemName: "chevron.forward")
-                    .foregroundColor(.white)
-            }
-            .frame(height: 25)
-            .padding(10)
-            .padding(.horizontal, 5)
-            .background(.black)
-            .cornerRadius(12)
-
-          
-           
         }
         .padding(.horizontal)
+       
       
     }
-    
-    func printFonts() {
-      
-    }
+  
 }
 
 //struct SearchResultView_Previews: PreviewProvider {
