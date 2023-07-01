@@ -10,14 +10,14 @@ import Kingfisher
 
 
 struct SearchResultDetailView: View {
-    var url = URL(string: "https://images-assets.nasa.gov/image/PIA00342/PIA00342~thumb.jpg")
+   
     var item: Item
     @Environment(\.dismiss) var dismiss
     var body: some View {
         ScrollView(.vertical) {
             VStack {
-               
-                KFImage(url)
+                
+                KFImage(URL(string: item.links?.first?.href ?? ""))
                     .resizable()
                     .frame(height: 400)
                     .aspectRatio(contentMode: .fit)
@@ -52,30 +52,31 @@ struct SearchResultDetailView: View {
                 )
             }
            
-            .toolbar(content: {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        dismiss.callAsFunction()
-                    } label: {
-                        Image(systemName: "chevron.left")
-                            .resizable()
-                            .foregroundColor(.white)
-                    }
-                    .frame(height: 25)
-                    .padding(10)
-                    .padding(.horizontal, 5)
-                    .background(Color("orange"))
-                    .cornerRadius(12)
-
-                }
-            })
            
         
         }
         .ignoresSafeArea(.all, edges: .all)
         .background(LinearGradient(colors: [Color("gradient1"), Color("gradient2")], startPoint: .topLeading, endPoint: .topTrailing))
-       
+        .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
+        .toolbar(content: {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    dismiss.callAsFunction()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .resizable()
+                        .foregroundColor(.white)
+                }
+                .frame(height: 25)
+                .padding(10)
+                .padding(.horizontal, 5)
+                .background(Color("orange"))
+                .cornerRadius(12)
+
+            }
+        })
+     
     }
 }
 

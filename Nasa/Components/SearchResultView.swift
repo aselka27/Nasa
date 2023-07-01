@@ -14,7 +14,7 @@ struct SearchResultView: View {
     var body: some View {
         HStack {
             VStack {
-                KFImage.url(URL(string: "https://images-assets.nasa.gov/image/NHQ201906010004/NHQ201906010004~thumb.jpg"))
+                KFImage.url(URL(string: item.links?.first?.href ?? ""))
                     .resizable()
                     .frame(width: 100, height: 100)
                     .clipShape(Circle())

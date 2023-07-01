@@ -19,7 +19,8 @@ struct HomeView: View {
                 SearchBar(searchText: $viewModel.searchQuery)
                     switch viewModel.viewState {
                     case .loading:
-                         ProgressView()
+                         Text("Loading...")
+                            .foregroundColor(.white)
                     case .success(let items):
                             ForEach(items, id: \.data?.first?.id) { item in
                                 NavigationLink {
@@ -38,11 +39,9 @@ struct HomeView: View {
         .edgesIgnoringSafeArea(.top)
         .background(LinearGradient(colors: [Color("gradient1"), Color("gradient2")], startPoint: .top, endPoint: .bottom))
         .navigationBarHidden(true)
-        .onTapGesture {
-            self.hideKeyboard1()
+        .onAppear {
+            UIScrollView.appearance().keyboardDismissMode = .onDrag
         }
-       
-        
     }
     
  
@@ -51,11 +50,6 @@ struct HomeView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
-    }
-}
-extension View {
-    func hideKeyboard1() {
-        UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.endEditing(true)
     }
 }
 

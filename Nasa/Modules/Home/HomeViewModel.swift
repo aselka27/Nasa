@@ -46,11 +46,12 @@ class HomeViewModelImpl: HomeViewModel, ObservableObject {
         guard !query.isEmpty else { return }
         Task { @MainActor in
             do {
+                viewState = .loading
                 let response =  try await searchService.performFetchRequest(with: query)
                 guard let items = response.collection?.items else { return }
                 searchResult = items
                 viewState = .success(items)
-                print(response.collection?.items?.count)
+               
             } catch {
                 viewState = .error(error)
                 print(error)
