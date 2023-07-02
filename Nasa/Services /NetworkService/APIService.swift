@@ -22,16 +22,6 @@ class APIServiceImpl: APIService {
     
     func performFetching<D: Decodable>(endpoint: BaseRouter, type: D.Type) async throws -> D {
         let (data, response) = try await URLSession.shared.data(for: requestBuilder.build(with: endpoint))
-//        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-//            throw APIError.badRequest
-//        }
-//        do {
-//            let decoder = JSONDecoder()
-//            return try decoder.decode(type, from: data)
-//        } catch {
-//            print(error.localizedDescription)
-//            throw APIError.decodingError
-//        }
         guard let httpResponse = response as? HTTPURLResponse else { throw APIError.invalidResponse }
         try validateStatusCode(statusCode: httpResponse.statusCode)
         let decodedResponse = try decodeData(data, objectType: type)

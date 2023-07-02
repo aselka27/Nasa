@@ -18,11 +18,10 @@ struct SearchResultView: View {
                     .placeholder({
                         ProgressView()
                     })
+                    .onFailureImage(R.image.imagePlaceholder()!)
                     .resizable()
                     .frame(width: 100, height: 100)
                     .clipShape(Circle())
-                    
-                    
             }
             VStack(alignment: .leading) {
                 Text(item.data?.first?.title ?? "N/A")

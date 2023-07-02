@@ -16,13 +16,14 @@ struct Collection: Codable {
     let items: [Item]?
 }
 
-struct Item: Codable {
+struct Item: Codable, Identifiable {
     let data: [ItemDetail]?
     let links: [Link]?
+    let id = UUID()
 }
 
 struct ItemDetail: Codable {
-    let id: String?
+
     let title: String?
     let dateCreated: String?
     let description: String?
@@ -31,7 +32,6 @@ struct ItemDetail: Codable {
     enum CodingKeys: String, CodingKey {
         case title, description
         case dateCreated = "date_created"
-        case id = "nasa_id"
     }
     
     init(from decoder: Decoder) throws {
@@ -39,7 +39,7 @@ struct ItemDetail: Codable {
         title = try values.decodeIfPresent(String.self, forKey: .title)
         dateCreated = try values.decodeIfPresent(String.self, forKey: .dateCreated)
         description = try values.decodeIfPresent(String.self, forKey: .description)
-        id = try values.decodeIfPresent(String.self, forKey: .id)
+       
     }
 }
 

@@ -30,9 +30,10 @@
 		34B8C57A2A4DEA2B00E3CB47 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B8C5792A4DEA2B00E3CB47 /* SearchResult.swift */; };
 		34B8C57C2A4E036700E3CB47 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B8C57B2A4E036700E3CB47 /* ErrorView.swift */; };
 		34B8C57F2A4E6B0400E3CB47 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B8C57E2A4E6B0400E3CB47 /* String+Extension.swift */; };
-		34B8C5872A4E8F3C00E3CB47 /* ResultImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B8C5862A4E8F3C00E3CB47 /* ResultImageView.swift */; };
 		34B8C58B2A4E9D3D00E3CB47 /* SearchResultDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B8C58A2A4E9D3C00E3CB47 /* SearchResultDetailView.swift */; };
 		34B8C58D2A4EAAB600E3CB47 /* CustomShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B8C58C2A4EAAB600E3CB47 /* CustomShape.swift */; };
+		34E666062A51D59300B25A06 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E666052A51D59200B25A06 /* R.generated.swift */; };
+		34E666082A5226BF00B25A06 /* CustomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E666072A5226BF00B25A06 /* CustomBackButton.swift */; };
 		7A40B95DA95BF40882A1B6DE /* Pods_Nasa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E13985829F9E12EC2823F00 /* Pods_Nasa.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,9 +63,10 @@
 		34B8C5792A4DEA2B00E3CB47 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		34B8C57B2A4E036700E3CB47 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		34B8C57E2A4E6B0400E3CB47 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
-		34B8C5862A4E8F3C00E3CB47 /* ResultImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultImageView.swift; sourceTree = "<group>"; };
 		34B8C58A2A4E9D3C00E3CB47 /* SearchResultDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDetailView.swift; sourceTree = "<group>"; };
 		34B8C58C2A4EAAB600E3CB47 /* CustomShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShape.swift; sourceTree = "<group>"; };
+		34E666052A51D59200B25A06 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		34E666072A5226BF00B25A06 /* CustomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackButton.swift; sourceTree = "<group>"; };
 		4E13985829F9E12EC2823F00 /* Pods_Nasa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nasa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B60F49C9B54CB960DCC8CF60 /* Pods-Nasa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nasa.release.xcconfig"; path = "Target Support Files/Pods-Nasa/Pods-Nasa.release.xcconfig"; sourceTree = "<group>"; };
 		CDE0031C652FA31CC874625F /* Pods-Nasa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nasa.debug.xcconfig"; path = "Target Support Files/Pods-Nasa/Pods-Nasa.debug.xcconfig"; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				3463E55D2A4BFC140066D33E /* NasaApp.swift */,
+				34E666052A51D59200B25A06 /* R.generated.swift */,
 				34B8C57D2A4E6AF200E3CB47 /* Extensions */,
 				34B8C5782A4DEA1A00E3CB47 /* Model */,
 				347579C12A4D3E4800799B68 /* Services  */,
@@ -140,8 +143,8 @@
 				3463E56E2A4C03B00066D33E /* SearchBar.swift */,
 				3463E5702A4C054C0066D33E /* SearchResultView.swift */,
 				34B8C57B2A4E036700E3CB47 /* ErrorView.swift */,
-				34B8C5862A4E8F3C00E3CB47 /* ResultImageView.swift */,
 				34B8C58C2A4EAAB600E3CB47 /* CustomShape.swift */,
+				34E666072A5226BF00B25A06 /* CustomBackButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 			buildConfigurationList = 3463E5682A4BFC170066D33E /* Build configuration list for PBXNativeTarget "Nasa" */;
 			buildPhases = (
 				A4BD9099D03EF4E8B020B454 /* [CP] Check Pods Manifest.lock */,
+				34E666042A51D06700B25A06 /* ShellScript */,
 				3463E5562A4BFC140066D33E /* Sources */,
 				3463E5572A4BFC140066D33E /* Frameworks */,
 				3463E5582A4BFC140066D33E /* Resources */,
@@ -318,6 +322,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		34E666042A51D06700B25A06 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
 		A4BD9099D03EF4E8B020B454 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -365,7 +388,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				347579D12A4D458000799B68 /* SearchRouter.swift in Sources */,
-				34B8C5872A4E8F3C00E3CB47 /* ResultImageView.swift in Sources */,
 				3463E5602A4BFC140066D33E /* HomeView.swift in Sources */,
 				34B8C5732A4DD34400E3CB47 /* AppFonts.swift in Sources */,
 				34B8C57F2A4E6B0400E3CB47 /* String+Extension.swift in Sources */,
@@ -373,7 +395,9 @@
 				3463E56F2A4C03B00066D33E /* SearchBar.swift in Sources */,
 				347579CB2A4D430400799B68 /* RequestBuilder.swift in Sources */,
 				34B8C5772A4DE3C400E3CB47 /* ViewState.swift in Sources */,
+				34E666062A51D59300B25A06 /* R.generated.swift in Sources */,
 				34B8C57C2A4E036700E3CB47 /* ErrorView.swift in Sources */,
+				34E666082A5226BF00B25A06 /* CustomBackButton.swift in Sources */,
 				34B8C58B2A4E9D3D00E3CB47 /* SearchResultDetailView.swift in Sources */,
 				347579C62A4D3EBA00799B68 /* HttpMethod.swift in Sources */,
 				347579C82A4D3EF400799B68 /* HttpHeader.swift in Sources */,

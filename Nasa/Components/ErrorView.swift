@@ -10,7 +10,7 @@ import SwiftUI
 struct ErrorView: View {
     var body: some View {
         VStack {
-          Text("Oops...Something went wrong")
+          Text("Oops...Something went wrong. Try searching again.")
                 .fontWeight(.bold)
         }
     }

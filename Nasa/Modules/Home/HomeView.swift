@@ -10,47 +10,51 @@ import Combine
 
 struct HomeView: View {
     @StateObject var viewModel = HomeViewModelImpl()
+    @State private var scrollOffset: CGFloat? = nil
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            LazyVStack {
-                Text("Nasa Search Engine")
-                    .font(.custom(AppFonts.openSansBold, size: 22))
-                    .foregroundColor(.white)
-                SearchBar(searchText: $viewModel.searchQuery)
-                    switch viewModel.viewState {
-                    case .loading:
-                         Text("Loading...")
+            ScrollView(.vertical) {
+                ScrollViewReader { proxy in
+                    LazyVStack {
+                        Text("Nasa Search Engine")
+                            .font(.custom(AppFonts.openSansBold, size: 22))
                             .foregroundColor(.white)
-                    case .success(let items):
-                            ForEach(items, id: \.data?.first?.id) { item in
-                                NavigationLink {
-                                    SearchResultDetailView(item: item)
-                                } label: {
-                                    SearchResultView(item: item)
-                                }
+                        SearchBar(searchText: $viewModel.searchQuery)
+                            switch viewModel.viewState {
+                            case .loading:
+                                 Text("Loading...")
+                                    .foregroundColor(.white)
+                            case .success(let items):
+                                ForEach(items) { item in
+                                        NavigationLink {
+                                            SearchResultDetailView(item: item)
+                                        } label: {
+                                            SearchResultView(item: item)
+                                        }
+                                    }
+                            case .error(_):
+                                ErrorView()
+                            case .none:
+                                EmptyView()
                             }
-                    case .error(let description):
-                        EmptyView()
-                    case .none:
-                        EmptyView()
                     }
+                    .padding(.top, 70)
+                }
             }
-            .padding(.top, 70)
-        }
-        .edgesIgnoringSafeArea(.top)
-        .background(LinearGradient(colors: [Color("gradient1"), Color("gradient2")], startPoint: .top, endPoint: .bottom))
-        .navigationBarHidden(true)
-        .onAppear {
-            UIScrollView.appearance().keyboardDismissMode = .interactive
-        }
-        .onTapGesture {
-            dismissKeyboard()
-        }
-       
+        
+            .edgesIgnoringSafeArea(.top)
+            .background(LinearGradient(colors: [Color(R.color.gradient1()!), Color(R.color.gradient2()!)], startPoint: .top, endPoint: .bottom))
+            .navigationBarHidden(true)
+            .onAppear {
+                UIScrollView.appearance().keyboardDismissMode = .interactive
+            }
+            .onTapGesture {
+                dismissKeyboard()
+            }
+        
     }
     func dismissKeyboard() {
-            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-        }
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
  
 }
 
@@ -59,4 +63,21 @@ struct ContentView_Previews: PreviewProvider {
         HomeView()
     }
 }
+
+
+/*
+ GeometryReader { reader -> Color in
+     let minY = reader.frame(in: .global).minY
+     let height = UIScreen.main.bounds.height*0.8
+     // when it goes over the height -> trigger update
+     if minY < height {
+         print(items.count)
+        print("reached bottom")
+     }
+
+     return Color.clear
+ }
+ .frame(width: 20, height: 20)
+
+ */
 
