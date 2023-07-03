@@ -9,15 +9,15 @@ import Foundation
 
 
 protocol SearchService {
-    func performFetchRequest(with query: String, page: Int, pageSize: Int) async throws -> SearchResult
+    func performFetchRequest(with query: String, page: Int, pageSize: Int) async throws -> NasaResponseDTO
 }
 
 
 class SearchServiceImpl: SearchService {
     static let shared = SearchServiceImpl()
     private init() { }
-    func performFetchRequest(with query: String, page: Int, pageSize: Int) async throws -> SearchResult {
-            let results = try await APIServiceImpl.shared.performFetching(endpoint: SearchRouter.search(q: query, page: page, pageSize: pageSize), type: SearchResult.self)
-            return results
+    func performFetchRequest(with query: String, page: Int, pageSize: Int) async throws -> NasaResponseDTO {
+           return try await APIServiceImpl.shared.performFetching(endpoint: SearchRouter.search(q: query, page: page, pageSize: pageSize), type: NasaResponseDTO.self)
+           
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct SearchResult: Codable {
+struct NasaResponseDTO: Codable {
     let collection: Collection?
 }
 

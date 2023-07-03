@@ -90,7 +90,7 @@ struct _R {
     }
   }
 
-  /// This `_R.file` struct is generated, and contains static references to 3 resource files.
+  /// This `_R.file` struct is generated, and contains static references to 4 resource files.
   struct file {
     let bundle: Foundation.Bundle
 
@@ -102,5 +102,8 @@ struct _R {
 
     /// Resource file `OpenSans-Semibold.ttf`.
     var openSansSemiboldTtf: RswiftResources.FileResource { .init(name: "OpenSans-Semibold", pathExtension: "ttf", bundle: bundle, locale: LocaleReference.none) }
+
+    /// Resource file `response.json`.
+    var responseJson: RswiftResources.FileResource { .init(name: "response", pathExtension: "json", bundle: bundle, locale: LocaleReference.none) }
   }
 }
