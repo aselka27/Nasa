@@ -28,6 +28,7 @@ class HomeViewModelImpl: HomeViewModel, ObservableObject {
     
     init() {
         getSearchResult(searchQuery)
+        viewState = .none
     }
     func getSearchResult(_ query: String) {
         $searchQuery
@@ -36,9 +37,9 @@ class HomeViewModelImpl: HomeViewModel, ObservableObject {
             .sink { [weak self] query in
                 if query == "" {
                     // data is reset
-                    self?.viewState = .success([])
                     self?.searchResult = []
                     self?.currentPage = 1
+                    self?.viewState = .none
                 } else {
                     // start search
                     print(query)

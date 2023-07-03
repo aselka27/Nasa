@@ -38,6 +38,7 @@
 		34E666172A524D9700B25A06 /* response.json in Resources */ = {isa = PBXBuildFile; fileRef = 34E666162A524D9700B25A06 /* response.json */; };
 		34E666192A52565300B25A06 /* JSONDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E666182A52565300B25A06 /* JSONDataTests.swift */; };
 		34E6661A2A525BDD00B25A06 /* response.json in Resources */ = {isa = PBXBuildFile; fileRef = 34E666162A524D9700B25A06 /* response.json */; };
+		34E6661D2A52691400B25A06 /* StartSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E6661C2A52691400B25A06 /* StartSearchView.swift */; };
 		7A40B95DA95BF40882A1B6DE /* Pods_Nasa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E13985829F9E12EC2823F00 /* Pods_Nasa.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,7 @@
 		34E6660F2A523CB300B25A06 /* APIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceTests.swift; sourceTree = "<group>"; };
 		34E666162A524D9700B25A06 /* response.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = response.json; sourceTree = "<group>"; };
 		34E666182A52565300B25A06 /* JSONDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDataTests.swift; sourceTree = "<group>"; };
+		34E6661C2A52691400B25A06 /* StartSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartSearchView.swift; sourceTree = "<group>"; };
 		4E13985829F9E12EC2823F00 /* Pods_Nasa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nasa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B60F49C9B54CB960DCC8CF60 /* Pods-Nasa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nasa.release.xcconfig"; path = "Target Support Files/Pods-Nasa/Pods-Nasa.release.xcconfig"; sourceTree = "<group>"; };
 		CDE0031C652FA31CC874625F /* Pods-Nasa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nasa.debug.xcconfig"; path = "Target Support Files/Pods-Nasa/Pods-Nasa.debug.xcconfig"; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				34B8C57B2A4E036700E3CB47 /* ErrorView.swift */,
 				34B8C58C2A4EAAB600E3CB47 /* CustomShape.swift */,
 				34E666072A5226BF00B25A06 /* CustomBackButton.swift */,
+				34E6661C2A52691400B25A06 /* StartSearchView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				34B8C57C2A4E036700E3CB47 /* ErrorView.swift in Sources */,
 				34E666082A5226BF00B25A06 /* CustomBackButton.swift in Sources */,
 				34B8C58B2A4E9D3D00E3CB47 /* SearchResultDetailView.swift in Sources */,
+				34E6661D2A52691400B25A06 /* StartSearchView.swift in Sources */,
 				347579C62A4D3EBA00799B68 /* HttpMethod.swift in Sources */,
 				347579C82A4D3EF400799B68 /* HttpHeader.swift in Sources */,
 				347579CD2A4D43B700799B68 /* APIService.swift in Sources */,

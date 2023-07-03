@@ -32,15 +32,18 @@ struct HomeView: View {
                                         }
                                     }
                             case .error(_):
+                                Spacer(minLength: 200)
                                 ErrorView()
                             case .none:
-                                EmptyView()
+                                Spacer(minLength: 200)
+                              StartSearchView()
+                               
                             }
                     }
                     .padding(.top, 70)
+                    .frame(maxWidth: .infinity)
                 }
             }
-        
             .edgesIgnoringSafeArea(.top)
             .background(LinearGradient(colors: [Color(R.color.gradient1()!), Color(R.color.gradient2()!)], startPoint: .top, endPoint: .bottom))
             .navigationBarHidden(true)
