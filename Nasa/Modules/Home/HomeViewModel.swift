@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 
 protocol HomeViewModel {
@@ -21,9 +22,13 @@ class HomeViewModelImpl: HomeViewModel, ObservableObject {
     var searchCancellable: Set<AnyCancellable> = []
     let searchService = SearchServiceImpl.shared
     @Published var searchResult: [Item] = []
+    var isLoading = false
+    var currentPage = 1
+    var pageSize = 100
     
     init() {
         getSearchResult(searchQuery)
+        viewState = .none
     }
     func getSearchResult(_ query: String) {
         $searchQuery
@@ -32,7 +37,9 @@ class HomeViewModelImpl: HomeViewModel, ObservableObject {
             .sink { [weak self] query in
                 if query == "" {
                     // data is reset
-                    self?.viewState = .success([])
+                    self?.searchResult = []
+                    self?.currentPage = 1
+                    self?.viewState = .none
                 } else {
                     // start search
                     print(query)
@@ -43,19 +50,32 @@ class HomeViewModelImpl: HomeViewModel, ObservableObject {
     }
     
     func performSearch(with query: String) {
-        guard !query.isEmpty else { return }
+        guard !query.isEmpty && !isLoading else { return }
+        isLoading = true
         Task { @MainActor in
             do {
                 viewState = .loading
-                let response =  try await searchService.performFetchRequest(with: query)
-                guard let items = response.collection?.items else { return }
-                searchResult = items
-                viewState = .success(items)
                
+                let response =  try await searchService.performFetchRequest(with: query, page: currentPage, pageSize: pageSize)
+                guard let items = response.collection?.items else { return }
+                searchResult.append(contentsOf: items)
+                viewState = .success(searchResult)
+                isLoading = false
+                searchResult.forEach { item in
+                    print(item.id)
+                }
             } catch {
                 viewState = .error(error)
                 print(error)
             }
         }
     }
+    func loadNextPageIfNeeded(items: [Item]) {
+          let lastIndex = items.count - 1 //  99
+          if lastIndex >= currentPage * pageSize - 1 {
+              currentPage += 1
+      
+              performSearch(with: searchQuery)
+          }
+      }
 }

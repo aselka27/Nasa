@@ -7,5 +7,7 @@ target 'Nasa' do
 
   # Pods for Nasa
 pod 'Kingfisher', '~> 7.0'
+pod 'R.swift'
+pod 'OHHTTPStubs/Swift' 
 
 end

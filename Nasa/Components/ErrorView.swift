@@ -10,12 +10,13 @@ import SwiftUI
 struct ErrorView: View {
     var body: some View {
         VStack {
-          Text("Oops...Something went wrong")
-                .fontWeight(.bold)
+          Text("Oops...Something went wrong. Try searching again.")
+                .font(.custom(AppFonts.openSansBold, size: 24))
+                .multilineTextAlignment(.center)
+                .foregroundColor(.white)
         }
     }
 }
-
 
 
 struct ErrorView_Previews: PreviewProvider {

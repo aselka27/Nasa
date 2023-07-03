@@ -1,2 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-Nasa/Pods-Nasa-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
+${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework
+${BUILT_PRODUCTS_DIR}/R.swift/RswiftResources.framework

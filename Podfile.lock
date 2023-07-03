@@ -1,16 +1,36 @@
 PODS:
   - Kingfisher (7.6.2)
+  - OHHTTPStubs/Core (9.1.0)
+  - OHHTTPStubs/Default (9.1.0):
+    - OHHTTPStubs/Core
+    - OHHTTPStubs/JSON
+    - OHHTTPStubs/NSURLSession
+    - OHHTTPStubs/OHPathHelpers
+  - OHHTTPStubs/JSON (9.1.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/NSURLSession (9.1.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/OHPathHelpers (9.1.0)
+  - OHHTTPStubs/Swift (9.1.0):
+    - OHHTTPStubs/Default
+  - R.swift (7.3.0)
 
 DEPENDENCIES:
   - Kingfisher (~> 7.0)
+  - OHHTTPStubs/Swift
+  - R.swift
 
 SPEC REPOS:
   trunk:
     - Kingfisher
+    - OHHTTPStubs
+    - R.swift
 
 SPEC CHECKSUMS:
   Kingfisher: 6c5449c6450c5239166510ba04afe374a98afc4f
+  OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
+  R.swift: cef1c530541cb49412752721797f10dae6b32d11
 
-PODFILE CHECKSUM: 1fa47f9a36f36e984c52810391699f0e76dc8564
+PODFILE CHECKSUM: 127eed799f31cf21b9de1b9ddc37592e4faf2b0d
 
 COCOAPODS: 1.12.0
