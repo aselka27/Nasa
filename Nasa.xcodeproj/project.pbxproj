@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		344BE8152A532105007D1495 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344BE8142A532105007D1495 /* Constants.swift */; };
 		3463E55E2A4BFC140066D33E /* NasaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3463E55D2A4BFC140066D33E /* NasaApp.swift */; };
 		3463E5602A4BFC140066D33E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3463E55F2A4BFC140066D33E /* HomeView.swift */; };
 		3463E5622A4BFC170066D33E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3463E5612A4BFC170066D33E /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		344BE8142A532105007D1495 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3463E55A2A4BFC140066D33E /* Nasa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nasa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3463E55D2A4BFC140066D33E /* NasaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaApp.swift; sourceTree = "<group>"; };
 		3463E55F2A4BFC140066D33E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				34B8C57E2A4E6B0400E3CB47 /* String+Extension.swift */,
+				344BE8142A532105007D1495 /* Constants.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				3463E5712A4C054C0066D33E /* SearchResultView.swift in Sources */,
 				347579CF2A4D442F00799B68 /* APIError.swift in Sources */,
 				34B8C57A2A4DEA2B00E3CB47 /* NasaResponseDTO.swift in Sources */,
+				344BE8152A532105007D1495 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,7 +15,7 @@ final class APIServiceTests: XCTestCase {
     var apiService: SearchService!
     
     override func setUpWithError() throws {
-        apiService = SearchServiceImpl.shared
+        apiService = SearchServiceImpl()
     }
     
     override class func tearDown() {

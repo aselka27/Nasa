@@ -13,7 +13,7 @@ struct SearchBar: View {
         HStack(spacing: 3) {
             Image(systemName: "magnifyingglass")
                 .padding(.leading)
-            TextField("Start searching", text: $searchText)
+            TextField(StringConstants.searchBarPlaceholder, text: $searchText)
                 .padding(.horizontal)
                 .autocapitalization(.none)
                 .disableAutocorrection(true)

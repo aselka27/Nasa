@@ -34,22 +34,22 @@ struct SearchResultDetailView: View {
                      
                     VStack(alignment: .leading, spacing: 10) {
                         VStack(alignment: .center, spacing: 20) {
-                            Text(item.data?.first?.title ?? "N/A")
+                            Text(item.data?.first?.title ?? StringConstants.notAvailable)
                                 .font(.custom(AppFonts.openSansBold, size: 25))
                                 .foregroundColor(.white)
                             Divider()
                                 .frame(height: 3)
                                 .background(.gray)
                         }
-                        Text("About")
+                        Text(StringConstants.about)
                             .font(.custom(AppFonts.openSansBold, size: 19))
                             .foregroundColor(.white)
-                        Text("Date publsihed: \(item.data?.first?.dateCreated ?? "N/A")")
+                        Text("Date publsihed: \(item.data?.first?.dateCreated ?? StringConstants.notAvailable)")
                             .foregroundColor(.white)
                             .font(.custom(AppFonts.openSansRegular, size: 17))
                             .padding(.bottom, 50)
                         Spacer()
-                        Text(item.data?.first?.description ?? "N/A")
+                        Text(item.data?.first?.description ?? StringConstants.notAvailable)
                             .font(.custom(AppFonts.openSansRegular, size: 17))
                             .multilineTextAlignment(.leading)
                             .lineSpacing(8)

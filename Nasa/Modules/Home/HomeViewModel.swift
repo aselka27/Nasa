@@ -5,34 +5,41 @@
 //  Created by саргашкаева on 29.06.2023.
 //
 
-import Foundation
 import Combine
 import SwiftUI
 
-
-protocol HomeViewModel {
+@MainActor
+protocol HomeViewModel: ObservableObject {
     var searchQuery: String { get set }
-    func getSearchResult(_ query: String)
+    var viewState: ViewState<[Item]>? { get set }
+    var searchService: SearchService { get set }
+    func getSearchResult()
+    var searchResult: [Item] { get }
+    init(service: SearchService)
 }
 
 
-class HomeViewModelImpl: HomeViewModel, ObservableObject {
+@MainActor
+class HomeViewModelImpl: HomeViewModel {
+    
     @Published var searchQuery: String = ""
     @Published var viewState: ViewState<[Item]>?
     var searchCancellable: Set<AnyCancellable> = []
-    let searchService = SearchServiceImpl.shared
+    var searchService: SearchService
     @Published var searchResult: [Item] = []
-    var isLoading = false
+    var isRequestInProgress = false
     var currentPage = 1
-    var pageSize = 100
+    var pageSize: Int { 100 }
+    var totalHits: Int = 0
     
-    init() {
-        getSearchResult(searchQuery)
+    required init(service: SearchService) {
         viewState = .none
+        self.searchService = service
+        getSearchResult()
     }
-    func getSearchResult(_ query: String) {
+    func getSearchResult() {
         $searchQuery
-            .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
+            .debounce(for: .seconds(0.6), scheduler: RunLoop.main)
             .removeDuplicates()
             .sink { [weak self] query in
                 if query == "" {
@@ -42,7 +49,6 @@ class HomeViewModelImpl: HomeViewModel, ObservableObject {
                     self?.viewState = .none
                 } else {
                     // start search
-                    print(query)
                     self?.performSearch(with: query)
                 }
             }
@@ -50,32 +56,46 @@ class HomeViewModelImpl: HomeViewModel, ObservableObject {
     }
     
     func performSearch(with query: String) {
-        guard !query.isEmpty && !isLoading else { return }
-        isLoading = true
-        Task { @MainActor in
+        guard !query.isEmpty  else { return }
+        Task {
             do {
                 viewState = .loading
-               
                 let response =  try await searchService.performFetchRequest(with: query, page: currentPage, pageSize: pageSize)
                 guard let items = response.collection?.items else { return }
+                totalHits = (response.collection?.metadata.totalHits)!
                 searchResult.append(contentsOf: items)
                 viewState = .success(searchResult)
-                isLoading = false
-                searchResult.forEach { item in
-                    print(item.id)
-                }
+               
             } catch {
                 viewState = .error(error)
-                print(error)
+             
             }
         }
     }
-    func loadNextPageIfNeeded(items: [Item]) {
-          let lastIndex = items.count - 1 //  99
-          if lastIndex >= currentPage * pageSize - 1 {
-              currentPage += 1
-      
-              performSearch(with: searchQuery)
-          }
-      }
+    func loadNextPageIfNeeded(items: [Item]) async {
+        let lastIndex = items.count
+        if totalHits >= lastIndex && !isRequestInProgress { // Check if a request is already in progress
+            isRequestInProgress = true // Set the flag to indicate a request is being made
+            currentPage += 1
+            Task {
+                do {
+                    let response = try await searchService.performFetchRequest(with: searchQuery, page: currentPage, pageSize: pageSize)
+                    guard let items = response.collection?.items else {
+                        return
+                    }
+                    searchResult.append(contentsOf: items)
+                    viewState = .success(searchResult)
+           
+                } catch {
+                    viewState = .error(error)
+                }
+                isRequestInProgress = false // Reset the flag after the request is completed
+            }
+        }
+    }
+    
+    func canTriggerPagination(for item: Item) -> Bool {
+        return searchResult.count > 0 &&
+        searchResult.last == item ? true : false
+    }
 }
