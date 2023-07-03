@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		344BE8152A532105007D1495 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344BE8142A532105007D1495 /* Constants.swift */; };
+		344BE8242A538556007D1495 /* TestScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344BE8232A538555007D1495 /* TestScrollView.swift */; };
 		3463E55E2A4BFC140066D33E /* NasaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3463E55D2A4BFC140066D33E /* NasaApp.swift */; };
 		3463E5602A4BFC140066D33E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3463E55F2A4BFC140066D33E /* HomeView.swift */; };
 		3463E5622A4BFC170066D33E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3463E5612A4BFC170066D33E /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		344BE8142A532105007D1495 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		344BE8232A538555007D1495 /* TestScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScrollView.swift; sourceTree = "<group>"; };
 		3463E55A2A4BFC140066D33E /* Nasa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nasa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3463E55D2A4BFC140066D33E /* NasaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaApp.swift; sourceTree = "<group>"; };
 		3463E55F2A4BFC140066D33E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 			children = (
 				3463E55F2A4BFC140066D33E /* HomeView.swift */,
 				34B8C5702A4DD2D900E3CB47 /* HomeViewModel.swift */,
+				344BE8232A538555007D1495 /* TestScrollView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 				34B8C5732A4DD34400E3CB47 /* AppFonts.swift in Sources */,
 				34B8C57F2A4E6B0400E3CB47 /* String+Extension.swift in Sources */,
 				347579C32A4D3E6600799B68 /* BaseRouter.swift in Sources */,
+				344BE8242A538556007D1495 /* TestScrollView.swift in Sources */,
 				3463E56F2A4C03B00066D33E /* SearchBar.swift in Sources */,
 				347579CB2A4D430400799B68 /* RequestBuilder.swift in Sources */,
 				34B8C5772A4DE3C400E3CB47 /* ViewState.swift in Sources */,
