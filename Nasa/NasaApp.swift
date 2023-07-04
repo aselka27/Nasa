@@ -12,7 +12,7 @@ struct NasaApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                HomeView(dataService: SearchServiceImpl())
+                HomeView(dataService: SearchServiceImpl(service: APIServiceImpl()))
             }
         }
     }

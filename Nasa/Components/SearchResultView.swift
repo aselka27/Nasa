@@ -36,11 +36,4 @@ struct SearchResultView: View {
         }
         .padding(.horizontal)
     }
-  
 }
-
-//struct SearchResultView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SearchResultView(item: <#Item#>)
-//    }
-//}

@@ -15,21 +15,17 @@ protocol APIService {
 
 
 class APIServiceImpl: APIService {
-   
-    static let shared = APIServiceImpl()
-    private let apiLog = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "API")
-    private init() {}
     
     let requestBuilder: URLRequestBuilder = URLRequestBuilderImpl()
     
     func performFetching<D: Decodable>(endpoint: BaseRouter, type: D.Type) async throws -> D {
         let request = try requestBuilder.build(with: endpoint)
         os_log(.info, log: .network, "API Request - URL: %@, Method: %@", request.url! as CVarArg, request.httpMethod!)
+        
         let (data, response) = try await URLSession.shared.data(for: requestBuilder.build(with: endpoint))
         guard let httpResponse = response as? HTTPURLResponse else { throw APIError.invalidResponse }
         try validateStatusCode(statusCode: httpResponse.statusCode, data: data)
-        let decodedResponse = try decodeData(data, objectType: type)
-        return decodedResponse
+        return try decodeData(data, objectType: type)
     }
 }
 

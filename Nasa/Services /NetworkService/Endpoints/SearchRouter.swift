@@ -9,7 +9,7 @@ import Foundation
 
 
 enum SearchRouter {
-    case search(q: String, page: Int, pageSize: Int)
+    case search(q: String, page: Int)
 }
 
 extension SearchRouter: BaseRouter {
@@ -36,8 +36,8 @@ extension SearchRouter: BaseRouter {
     
     var urlParameters: [URLQueryItem]? {
         switch self {
-        case .search(let q, let page, let pageSize):
-            return [.init(name: "q", value: q), .init(name: "media_type", value: "image"), .init(name: "page", value: "\(page)"), .init(name: "page_size", value: "\(pageSize)")]
+        case .search(let q, let page):
+            return [.init(name: "q", value: q), .init(name: "media_type", value: "image"), .init(name: "page", value: "\(page)")]
         }
     }
     
