@@ -31,7 +31,6 @@ class URLRequestBuilderImpl: URLRequestBuilder {
         endPoint.httpHeader?.forEach({ header in
             urlRequest.setValue(header.value, forHTTPHeaderField: header.name)
         })
-        print(urlRequest)
         return urlRequest
     }
 }

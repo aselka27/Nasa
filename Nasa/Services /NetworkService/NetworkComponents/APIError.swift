@@ -9,7 +9,7 @@ import Foundation
 
 
 enum APIError: Error {
-    case badRequest
+    case badRequest(reasong: String)
     case notFound
     case serverErrors
     case decodingError

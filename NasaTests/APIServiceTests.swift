@@ -5,11 +5,12 @@
 //  Created by саргашкаева on 2.07.2023.
 //
 
+
 import XCTest
-@testable import Nasa
 import OHHTTPStubs
+import OHHTTPStubsSwift
 
-
+@testable import Nasa
 final class APIServiceTests: XCTestCase {
     
     var apiService: SearchService!

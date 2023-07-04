@@ -47,7 +47,6 @@ struct HomeView: View {
                                                 }
                                             }
                                         }
-                                    
                                 case .error(_):
                                     Spacer(minLength: 200)
                                     ErrorView()
