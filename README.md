@@ -20,8 +20,8 @@ iOS 15 Client for NASA API with the following features:
 ## Screenshots
 
 <div id="myimages">
-<img src="Resources/Screenshots/empty.png" width="300" height="649">
-<img src="Resources/Screenshots/loading.png" width="300" height="649">
-<img src="Resources/Screenshots/success.png" width="300" height="649">
-<img src="Resources/Screenshots/detail.png" width="300" height="649">
+<img src="Screenshots/empty.png" width="300" height="649">
+<img src="Screenshots/loading.png" width="300" height="649">
+<img src="Screenshots/success.png" width="300" height="649">
+<img src="Screenshots/detail.png" width="300" height="649">
 </div>
