@@ -15,10 +15,6 @@ protocol APIService {
 
 
 class APIServiceImpl: APIService {
-   
-    static let shared = APIServiceImpl()
-    private let apiLog = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "API")
-    private init() {}
     
     let requestBuilder: URLRequestBuilder = URLRequestBuilderImpl()
     

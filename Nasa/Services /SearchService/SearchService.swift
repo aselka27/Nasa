@@ -14,7 +14,14 @@ protocol SearchService {
 
 
 class SearchServiceImpl: SearchService {
+    
+    var service: APIService
+    
+    init(service: APIService) {
+        self.service = service
+    }
+   
     func performFetchRequest(with query: String, page: Int) async throws -> NasaResponseDTO {
-           return try await APIServiceImpl.shared.performFetching(endpoint: SearchRouter.search(q: query, page: page), type: NasaResponseDTO.self)
+        return try await service.performFetching(endpoint: SearchRouter.search(q: query, page: page), type: NasaResponseDTO.self)
     }
 }

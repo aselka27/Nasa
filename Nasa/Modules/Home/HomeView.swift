@@ -73,6 +73,8 @@ struct HomeView: View {
 extension HomeView {
     func noResults() -> some View {
         Text("No Results")
+            .font(.custom(R.font.openSansBold, size: 20))
+            .foregroundColor(.white)
     }
     
     func backgroundView() -> some View {
