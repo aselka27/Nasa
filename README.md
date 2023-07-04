@@ -1,6 +1,6 @@
 ## Overview
 
-iOS 15 Client for Marvel API with the following features:
+iOS 15 Client for NASA API with the following features:
 
 - MVVM
 - Abstract Network Layer
