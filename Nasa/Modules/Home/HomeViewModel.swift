@@ -28,7 +28,6 @@ class HomeViewModelImpl: HomeViewModel {
     @Published var searchResult: [Item] = []
     var isRequestInProgress = false
     var currentPage = 1
-    var pageSize: Int { 100 }
     var totalHits: Int = 0
     
     required init(service: SearchService) {
@@ -59,7 +58,7 @@ class HomeViewModelImpl: HomeViewModel {
         Task {
             do {
                 viewState = .loading
-                let response =  try await searchService.performFetchRequest(with: query, page: currentPage, pageSize: pageSize)
+                let response =  try await searchService.performFetchRequest(with: query, page: currentPage)
                 guard let items = response.collection?.items else { return }
                 totalHits = (response.collection?.metadata.totalHits)!
                 searchResult.append(contentsOf: items)
@@ -76,7 +75,7 @@ class HomeViewModelImpl: HomeViewModel {
             currentPage += 1
             Task {
                 do {
-                    let response = try await searchService.performFetchRequest(with: searchQuery, page: currentPage, pageSize: pageSize)
+                    let response = try await searchService.performFetchRequest(with: searchQuery, page: currentPage)
                     guard let items = response.collection?.items else {
                         return
                     }

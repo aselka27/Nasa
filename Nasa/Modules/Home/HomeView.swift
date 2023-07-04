@@ -10,69 +10,63 @@ import Combine
 
 struct HomeView: View {
     @StateObject var viewModel: HomeViewModelImpl
-    @State private var scrollOffset: CGFloat = 0
-    private let scrollThreshold: CGFloat = 100
-
+    
     init(dataService: SearchService) {
         _viewModel = StateObject(wrappedValue: HomeViewModelImpl(service: dataService))
+        UIScrollView.appearance().keyboardDismissMode = .onDrag
     }
     var body: some View {
         ZStack {
-           backgroundView()
+            backgroundView()
             ScrollView(.vertical) {
-                        LazyVStack {
-                            Text(StringConstants.homeViewTitle)
-                                .font(.custom(R.font.openSansBold, size: 22))
-                                .foregroundColor(.white)
-                            SearchBar(searchText: $viewModel.searchQuery)
-                                switch viewModel.viewState {
-                                case .loading:
-                                     ProgressView()
-                                        .progressViewStyle(.circular)
-                                        .imageScale(.large)
-                                        .tint(.white)
-                                case .success(let items):
-                                    if items.count == 0 {
-                                        Spacer(minLength: 200)
-                                        noResults()
-                                    }
-                                    ForEach(items) { item in
-                                            NavigationLink {
-                                                SearchResultDetailView(item: item)
-                                            } label: {
-                                                SearchResultView(item: item)
-                                            }
-                                            .task {
-                                                if viewModel.canTriggerPagination(for: item) {
-                                                  await  viewModel.loadNextPageIfNeeded(items: items)
-                                                }
-                                            }
-                                        }
-                                case .error(let error):
-                                    Spacer(minLength: 200)
-                                    ErrorView(error: error as! APIError)
-                                case .none:
-                                    Spacer(minLength: 200)
-                                  StartSearchView()
-                                }
+                LazyVStack {
+                    Text(StringConstants.homeViewTitle)
+                        .font(.custom(R.font.openSansBold, size: 22))
+                        .foregroundColor(.white)
+                    SearchBar(searchText: $viewModel.searchQuery)
+                    switch viewModel.viewState {
+                    case .loading:
+                        ProgressView()
+                            .progressViewStyle(.circular)
+                            .imageScale(.large)
+                            .tint(.white)
+                    case .success(let items):
+                        if items.count == 0 {
+                            Spacer(minLength: 200)
+                            noResults()
                         }
-                        .frame(maxWidth: .infinity)
-                        .padding(.top, 20)
+                        ForEach(items) { item in
+                            NavigationLink {
+                                SearchResultDetailView(item: item)
+                            } label: {
+                                SearchResultView(item: item)
+                            }
+                            .task {
+                                if viewModel.canTriggerPagination(for: item) {
+                                    await  viewModel.loadNextPageIfNeeded(items: items)
+                                }
+                            }
+                        }
+                    case .error(let error):
+                        Spacer(minLength: 200)
+                        ErrorView(error: error as! APIError)
+                    case .none:
+                        Spacer(minLength: 200)
+                        StartSearchView()
+                    }
                 }
-                .navigationBarHidden(true)
-                .onAppear {
-                    UIScrollView.appearance().keyboardDismissMode = .onDrag
+                .frame(maxWidth: .infinity)
+                .padding(.top, 20)
+            }
+            .navigationBarHidden(true)
+            .onTapGesture {
+                withAnimation {
+                    dismissKeyboard()
                 }
-                .onTapGesture {
-                    withAnimation {
-                        dismissKeyboard()
-                    } 
             }
         }
         
     }
-    
-   
 }
 
 
