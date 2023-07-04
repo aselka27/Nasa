@@ -16,7 +16,7 @@ final class APIServiceTests: XCTestCase {
     var apiService: SearchService!
     
     override func setUpWithError() throws {
-        apiService = SearchServiceImpl()
+        apiService = SearchServiceImpl(service: APIServiceImpl())
     }
     
     override class func tearDown() {
@@ -34,7 +34,7 @@ final class APIServiceTests: XCTestCase {
         
         do {
             // WHEN
-            let results = try await apiService.performFetchRequest(with: "nasr", page: 1, pageSize: 100)
+            let results = try await apiService.performFetchRequest(with: "nasr", page: 1)
             // THEN
             XCTAssertNotNil(results)
             XCTAssertEqual(results.collection?.items?.count, 8)
@@ -67,7 +67,7 @@ final class APIServiceTests: XCTestCase {
         }
         do {
             // WHEN
-            _ = try await apiService.performFetchRequest(with: "nasr", page: 1, pageSize: 100)
+            _ = try await apiService.performFetchRequest(with: "nasr", page: 1)
         } catch APIError.decodingError {
            // THEN
             assert(true, "Expected Error")
@@ -89,7 +89,7 @@ final class APIServiceTests: XCTestCase {
         }
         do {
             // WHEN
-            _ = try await apiService.performFetchRequest(with: "nasr", page: 1, pageSize: 100)
+            _ = try await apiService.performFetchRequest(with: "nasr", page: 1)
         } catch APIError.serverErrors {
             assert(true, "Expected error")
         } catch {

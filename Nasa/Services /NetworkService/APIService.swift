@@ -37,7 +37,7 @@ extension APIServiceImpl {
             return
         case 400:
             let decodedData = try decodeData(data, objectType: FailureModel.self)
-            os_log(.info, log: .network, "API Request FAILED - status code 400: %@", [decodedData.reason])
+            os_log(.info, log: .network, "API Request FAILED - status code 400: %@", decodedData.reason)
             throw APIError.badRequest(reasong: decodedData.reason)
         case 404:
             throw APIError.notFound

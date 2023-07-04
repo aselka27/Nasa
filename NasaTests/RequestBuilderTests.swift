@@ -23,14 +23,16 @@ class RequestBuilderTest: XCTestCase {
            
            // WHEN
            let urlRequest = try urlRequestBuilder.build(with: endpoint)
-           
+    
            // THEN
            XCTAssertEqual(urlRequest.url?.scheme, endpoint.scheme)
            XCTAssertEqual(urlRequest.url?.host, endpoint.host)
            XCTAssertEqual(urlRequest.url?.path, endpoint.path)
+        
            XCTAssertEqual(urlRequest.httpMethod, endpoint.httpMethod.rawValue)
            XCTAssertEqual(urlRequest.httpBody, endpoint.bodyParameters)
-           
+           XCTAssertEqual(urlRequest.url?.query, "page=1")
+
            endpoint.httpHeader?.forEach { header in
                XCTAssertEqual(urlRequest.value(forHTTPHeaderField: header.name), header.value)
            }
@@ -52,7 +54,7 @@ enum MockEndpoint: BaseRouter {
     var host: String {
         switch self {
         case .getExample:
-            return "example.com"
+            return "images-api.nasa.gov"
         }
     }
     
@@ -87,7 +89,7 @@ enum MockEndpoint: BaseRouter {
     var urlParameters: [URLQueryItem]? {
         switch self {
         case .getExample:
-            return [URLQueryItem(name: "param1", value: "value1")]
+            return [URLQueryItem(name: "page", value: "\(1)")]
         }
     }
 }

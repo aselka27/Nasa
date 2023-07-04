@@ -15,6 +15,7 @@ struct CustomBackButton: View {
         }){
             Image(uiImage: .chevronLeft)
                 .resizable()
+                .aspectRatio(contentMode: .fit)
                 .frame(width: 15, height: 15)
                 .padding()
         }
