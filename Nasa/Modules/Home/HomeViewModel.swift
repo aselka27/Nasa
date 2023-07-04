@@ -13,7 +13,7 @@ protocol HomeViewModel: ObservableObject {
     var searchQuery: String { get set }
     var viewState: ViewState<[Item]>? { get set }
     var searchService: SearchService { get set }
-    func getSearchResult()
+    func startSearch()
     var searchResult: [Item] { get }
     init(service: SearchService)
 }
@@ -23,19 +23,22 @@ class HomeViewModelImpl: HomeViewModel {
     
     @Published var searchQuery: String = ""
     @Published var viewState: ViewState<[Item]>?
+    @Published var searchResult: [Item] = []
+    
     var searchCancellable: Set<AnyCancellable> = []
     var searchService: SearchService
-    @Published var searchResult: [Item] = []
+   
     var isRequestInProgress = false
     var currentPage = 1
     var totalHits: Int = 0
     
     required init(service: SearchService) {
-        viewState = .none
         self.searchService = service
-        getSearchResult()
+        viewState = .none
+        startSearch()
     }
-    func getSearchResult() {
+   
+    func startSearch() {
         $searchQuery
             .debounce(for: .seconds(0.6), scheduler: RunLoop.main)
             .removeDuplicates()
@@ -68,6 +71,7 @@ class HomeViewModelImpl: HomeViewModel {
             }
         }
     }
+    
     func loadNextPageIfNeeded(items: [Item]) async {
         let lastIndex = items.count
         if totalHits >= lastIndex && !isRequestInProgress { // Check if a request is already in progress
@@ -81,7 +85,6 @@ class HomeViewModelImpl: HomeViewModel {
                     }
                     searchResult.append(contentsOf: items)
                     viewState = .success(searchResult)
-           
                 } catch {
                     viewState = .error(error)
                 }
