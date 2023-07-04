@@ -15,6 +15,5 @@ enum APIError: Error {
     case decodingError
     case unknownError
     case invalidResponse
-    case noInternetConnection
 }
 

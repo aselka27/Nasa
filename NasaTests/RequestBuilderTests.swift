@@ -34,8 +34,6 @@ class RequestBuilderTest: XCTestCase {
            endpoint.httpHeader?.forEach { header in
                XCTAssertEqual(urlRequest.value(forHTTPHeaderField: header.name), header.value)
            }
-        
-        
        }
         
 }

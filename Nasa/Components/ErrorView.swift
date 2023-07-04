@@ -8,12 +8,17 @@
 import SwiftUI
 
 struct ErrorView: View {
+    var error: APIError
+    
     var body: some View {
         VStack {
-          Text("Oops...Something went wrong. Try searching again.")
-                .font(.custom(AppFonts.openSansBold, size: 24))
-                .multilineTextAlignment(.center)
-                .foregroundColor(.white)
+            switch error {
+            default:
+              Text("Oops...Something went wrong. Try searching again.")
+                    .font(.custom(R.font.openSansBold, size: 24))
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.white)
+            }
         }
     }
 }
@@ -21,6 +26,6 @@ struct ErrorView: View {
 
 struct ErrorView_Previews: PreviewProvider {
     static var previews: some View {
-        ErrorView()
+        ErrorView(error: .unknownError)
     }
 }

@@ -13,7 +13,7 @@ struct CustomBackButton: View {
         Button(action: {
             action()
         }){
-            Image(systemName: "chevron.left")
+            Image(uiImage: .chevronLeft)
                 .resizable()
                 .frame(width: 15, height: 15)
                 .padding()

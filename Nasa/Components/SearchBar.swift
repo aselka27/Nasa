@@ -11,7 +11,7 @@ struct SearchBar: View {
     @Binding var searchText: String
     var body: some View {
         HStack(spacing: 3) {
-            Image(systemName: "magnifyingglass")
+            Image(uiImage: .magnifyingGlass)
                 .padding(.leading)
             TextField(StringConstants.searchBarPlaceholder, text: $searchText)
                 .padding(.horizontal)

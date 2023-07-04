@@ -18,18 +18,19 @@ struct HomeView: View {
     }
     var body: some View {
         ZStack {
-            LinearGradient(colors: [Color(R.color.gradient1()!), Color(R.color.gradient2()!)], startPoint: .top, endPoint: .bottom)
-                .edgesIgnoringSafeArea(.all)
+           backgroundView()
             ScrollView(.vertical) {
                         LazyVStack {
                             Text(StringConstants.homeViewTitle)
-                                .font(.custom(AppFonts.openSansBold, size: 22))
+                                .font(.custom(R.font.openSansBold, size: 22))
                                 .foregroundColor(.white)
                             SearchBar(searchText: $viewModel.searchQuery)
                                 switch viewModel.viewState {
                                 case .loading:
-                                     Text("Loading...")
-                                        .foregroundColor(.white)
+                                     ProgressView()
+                                        .progressViewStyle(.circular)
+                                        .imageScale(.large)
+                                        .tint(.white)
                                 case .success(let items):
                                     if items.count == 0 {
                                         Spacer(minLength: 200)
@@ -47,9 +48,9 @@ struct HomeView: View {
                                                 }
                                             }
                                         }
-                                case .error(_):
+                                case .error(let error):
                                     Spacer(minLength: 200)
-                                    ErrorView()
+                                    ErrorView(error: error as! APIError)
                                 case .none:
                                     Spacer(minLength: 200)
                                   StartSearchView()
@@ -63,15 +64,14 @@ struct HomeView: View {
                     UIScrollView.appearance().keyboardDismissMode = .onDrag
                 }
                 .onTapGesture {
-                    dismissKeyboard()
+                    withAnimation {
+                        dismissKeyboard()
+                    } 
             }
         }
         
     }
-    func dismissKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
- 
+    
    
 }
 
@@ -79,6 +79,14 @@ struct HomeView: View {
 extension HomeView {
     func noResults() -> some View {
         Text("No Results")
+    }
+    
+    func backgroundView() -> some View {
+        LinearGradient(colors: [Color(R.color.gradient1()!), Color(R.color.gradient2()!)], startPoint: .top, endPoint: .bottom)
+            .edgesIgnoringSafeArea(.all)
+    }
+    func dismissKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 

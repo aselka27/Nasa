@@ -18,7 +18,6 @@ protocol HomeViewModel: ObservableObject {
     init(service: SearchService)
 }
 
-
 @MainActor
 class HomeViewModelImpl: HomeViewModel {
     
@@ -56,7 +55,7 @@ class HomeViewModelImpl: HomeViewModel {
     }
     
     func performSearch(with query: String) {
-        guard !query.isEmpty  else { return }
+        guard !query.isEmpty else { return }
         Task {
             do {
                 viewState = .loading
@@ -65,10 +64,8 @@ class HomeViewModelImpl: HomeViewModel {
                 totalHits = (response.collection?.metadata.totalHits)!
                 searchResult.append(contentsOf: items)
                 viewState = .success(searchResult)
-               
             } catch {
                 viewState = .error(error)
-             
             }
         }
     }
