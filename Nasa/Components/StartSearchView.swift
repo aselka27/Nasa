@@ -12,8 +12,6 @@ struct StartSearchView: View {
         VStack(spacing: 10) {
             Image(uiImage: R.image.explore()!)
         }
-       
-
     }
 }
 

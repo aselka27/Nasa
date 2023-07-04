@@ -24,19 +24,17 @@ struct SearchResultView: View {
                     .clipShape(Circle())
             }
             VStack(alignment: .leading) {
-                Text(item.data?.first?.title ?? "N/A")
-                    .font(.custom(AppFonts.openSansBold, size: 34.59))
+                Text(item.data?.first?.title ?? StringConstants.notAvailable)
+                    .font(.custom(R.font.openSansBold, size: 34.59))
                     .foregroundColor(.white)
                     .lineLimit(1)
-                Text(item.data?.first?.dateCreated?.formatDateString() ?? "N/A")
+                Text(item.data?.first?.dateCreated?.formatDateString() ?? StringConstants.notAvailable)
                     .foregroundColor(.white)
-                    .font(.custom(AppFonts.openSansBold, size: 14))
+                    .font(.custom(R.font.openSansBold, size: 14))
             }
             Spacer()
         }
         .padding(.horizontal)
-       
-      
     }
   
 }

@@ -5,17 +5,18 @@
 //  Created by саргашкаева on 2.07.2023.
 //
 
+
 import XCTest
-@testable import Nasa
 import OHHTTPStubs
+import OHHTTPStubsSwift
 
-
+@testable import Nasa
 final class APIServiceTests: XCTestCase {
     
     var apiService: SearchService!
     
     override func setUpWithError() throws {
-        apiService = SearchServiceImpl.shared
+        apiService = SearchServiceImpl()
     }
     
     override class func tearDown() {
@@ -25,7 +26,7 @@ final class APIServiceTests: XCTestCase {
     
     func testShouldReturnDecodedResults() async throws {
         // ARRANGE
-        let expectedData = try XCTUnwrap(loadJSONData(from: "response"))
+        let expectedData = try XCTUnwrap(loadJSONData())
         let stubResponse = HTTPStubsResponse(data: expectedData, statusCode: 200, headers: nil)
         stub(condition: isHost("images-api.nasa.gov")) { _ in
             return stubResponse
@@ -44,7 +45,7 @@ final class APIServiceTests: XCTestCase {
     
     func testDecodingNasaResponseDTO() throws {
         // ARRANGE
-        let jsonData = try XCTUnwrap(loadJSONData(from: "response"))
+        let jsonData = try XCTUnwrap(loadJSONData())
         
         // WHEN
         let decodedResponse = try JSONDecoder().decode(NasaResponseDTO.self, from: jsonData)
@@ -97,15 +98,15 @@ final class APIServiceTests: XCTestCase {
     }
     
     // Helper method to load JSON data from a file
-    func loadJSONData(from fileName: String) -> Data? {
-        let bundle = Bundle(for: type(of: self))
-        guard let path = bundle.path(forResource: fileName, ofType: "json") else {
-            XCTFail("Failed to locate JSON file: \(fileName).json")
+    func loadJSONData() -> Data? {
+        guard let fileURL = R.file.responseJson() else {
+            XCTFail("Failed to locate JSON file.")
             return nil
         }
-        print("JSON file path: \(path)")
-        return try? Data(contentsOf: URL(fileURLWithPath: path))
+        print("JSON file path: \(fileURL.path)")
+        return try? Data(contentsOf: fileURL)
     }
-    
-    
 }
+    
+    
+
