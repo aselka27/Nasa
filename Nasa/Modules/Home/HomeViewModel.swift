@@ -7,6 +7,7 @@
 
 import Combine
 import SwiftUI
+import os
 
 @MainActor
 protocol HomeViewModel: ObservableObject {
@@ -72,9 +73,17 @@ class HomeViewModelImpl: HomeViewModel {
         }
     }
     
+    func shouldLoadMoreData(_ item: Item, _ items: [Item]) async {
+        guard item == items.last else {
+           return
+        }
+        if canTriggerPagination() {
+            await loadNextPageIfNeeded(items: items)
+        }
+    }
+    
     func loadNextPageIfNeeded(items: [Item]) async {
-        let lastIndex = items.count
-        if totalHits >= lastIndex && !isRequestInProgress { // Check if a request is already in progress
+        if !isRequestInProgress { // Check if a request is already in progress
             isRequestInProgress = true // Set the flag to indicate a request is being made
             currentPage += 1
             Task {
@@ -93,8 +102,7 @@ class HomeViewModelImpl: HomeViewModel {
         }
     }
     
-    func canTriggerPagination(for item: Item) -> Bool {
-        return searchResult.count > 0 &&
-        searchResult.last == item ? true : false
+    func canTriggerPagination() -> Bool {
+        return searchResult.count > 0 && totalHits > searchResult.count ? true : false
     }
 }

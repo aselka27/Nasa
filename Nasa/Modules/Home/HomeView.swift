@@ -42,9 +42,7 @@ struct HomeView: View {
                                 SearchResultView(item: item)
                             }
                             .task {
-                                if viewModel.canTriggerPagination(for: item) {
-                                    await  viewModel.loadNextPageIfNeeded(items: items)
-                                }
+                                await viewModel.shouldLoadMoreData(item, items)
                             }
                         }
                     case .error(let error):
@@ -84,5 +82,7 @@ extension HomeView {
     func dismissKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
+    
+    
 }
 
